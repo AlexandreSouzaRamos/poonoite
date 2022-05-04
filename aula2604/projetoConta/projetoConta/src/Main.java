@@ -1,4 +1,10 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
+
+    private List<Conta> lista = new ArrayList<>();
+
     public static void main(String[] args) {
         Cliente cliente = new Cliente();
         cliente.setIdCliente(1);
@@ -34,5 +40,14 @@ public class Main {
 
         System.out.println("Dados da conta corrente: " + cc.toString());
 
+        Main main = new Main();
+
+        main.adicionarConta(cc);
+        main.adicionarConta(poup);
+
+    }
+
+    public void adicionarConta(Conta c){
+        lista.add(c);
     }
 }
