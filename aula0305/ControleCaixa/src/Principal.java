@@ -1,3 +1,5 @@
+import view.Tela2;
+
 import javax.swing.*;
 
 public class Principal {
@@ -6,7 +8,7 @@ public class Principal {
         tela2.setContentPane(new Tela2().getPanelTela());
         tela2.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         tela2.setSize(350,400);
-        tela2.setTitle("Controle de Caixa");
+        tela2.setTitle("Controle de model.Caixa");
         tela2.setVisible(true);
     }
 }

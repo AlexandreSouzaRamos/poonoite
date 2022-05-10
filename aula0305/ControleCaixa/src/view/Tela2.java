@@ -1,3 +1,8 @@
+package view;
+
+import model.Caixa;
+import utils.SemSaldoException;
+
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -45,7 +50,14 @@ public class Tela2 {
             @Override
             public void mouseClicked(MouseEvent e) {
                 double valor = Double.parseDouble(txtValor.getText());
-                caixa.sacar(valor);
+                try {
+                    caixa.sacar(valor);
+                } catch (SemSaldoException ex) {
+                    JOptionPane.showMessageDialog(null,
+                            ex.getMessage(),
+                            "Erro",
+                            JOptionPane.ERROR_MESSAGE);
+                }
                 String frase = "Saque de " + valor + " efetuado.";
                 txtMsg.append(frase + "\n");
                 txtValor.setText(null);

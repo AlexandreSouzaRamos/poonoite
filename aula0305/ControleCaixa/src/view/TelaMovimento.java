@@ -1,3 +1,8 @@
+package view;
+
+import model.Caixa;
+import utils.SemSaldoException;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,7 +24,7 @@ public class TelaMovimento extends JFrame implements ActionListener {
         dButton = new Dimension(95,20);
         dTextArea = new Dimension(300, 140);
         //Definir propriedades da janela de movimento
-        setTitle("Controle de Caixa");
+        setTitle("Controle de model.Caixa");
         setResizable(false);
         setSize(dFrame);
         setLocation(200, 200);
@@ -102,7 +107,14 @@ public class TelaMovimento extends JFrame implements ActionListener {
         }
         if(e.getSource()==cmdRetirada){
             double valor = Double.parseDouble(txtValor.getText());
-            caixa.sacar(valor);
+            try {
+                caixa.sacar(valor);
+            } catch (SemSaldoException ex) {
+                JOptionPane.showMessageDialog(null,
+                        ex.getMessage(),
+                        "Erro",
+                        JOptionPane.ERROR_MESSAGE);
+            }
             String frase = "Saque de " + valor + " efetuado.";
             txtMsg.append(frase + "\n");
             txtValor.setText(null);
